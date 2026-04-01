@@ -1,0 +1,173 @@
+---
+const splits = [
+  {
+    role: "Post Author",
+    pct: 30,
+    note: "20% when a translator is involved",
+    color: "#4a6741",
+  },
+  {
+    role: "Top Commenters",
+    pct: 15,
+    note: "Top 10 by score, weighted by engagement",
+    color: "#5c7f52",
+  },
+  {
+    role: "Community Moderators",
+    pct: 15,
+    note: "Active moderators, split equally",
+    color: "#6b9660",
+  },
+  {
+    role: "Translator",
+    pct: 10,
+    note: "When a reader views a translation",
+    color: "#85b07a",
+  },
+  {
+    role: "Platform",
+    pct: 40,
+    note: "Keeps the lights on",
+    color: "#c8d5c4",
+  },
+];
+---
+
+<section id="earnings" class="section">
+  <div class="container">
+    <div class="earnings__header text-center">
+      <h2 class="heading-lg">Transparent revenue sharing</h2>
+      <p class="text-lg max-w-prose mx-auto">
+        Every ad impression generates revenue. Here's exactly how it's split.
+        No mystery algorithms. No hidden fees.
+      </p>
+    </div>
+
+    <div class="earnings__layout">
+      <div class="earnings__bar">
+        {splits.map((s) => (
+          <div
+            class="earnings__segment"
+            style={`flex: ${s.pct}; background: ${s.color};`}
+          >
+            <span class="earnings__segment-pct">{s.pct}%</span>
+          </div>
+        ))}
+      </div>
+
+      <div class="earnings__breakdown">
+        {splits.map((s) => (
+          <div class="earnings__row">
+            <div class="earnings__dot" style={`background: ${s.color};`} />
+            <div class="earnings__info">
+              <div class="earnings__role">
+                <span class="heading-sm">{s.role}</span>
+                <span class="earnings__pct">{s.pct}%</span>
+              </div>
+              <p class="text-muted">{s.note}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="earnings__cta text-center">
+      <p class="text-lg">
+        Payouts via <strong>Stripe</strong> and <strong>Wise</strong> to 16+ currencies.
+        Minimum withdrawal: <strong>$10</strong>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .earnings__header {
+    margin-bottom: 3.5rem;
+  }
+
+  .earnings__header .text-lg {
+    margin-top: 1rem;
+  }
+
+  .earnings__layout {
+    max-width: 42rem;
+    margin-inline: auto;
+  }
+
+  .earnings__bar {
+    display: flex;
+    height: 3rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+  }
+
+  .earnings__segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+  }
+
+  .earnings__segment-pct {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .earnings__breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+
+  .earnings__row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .earnings__dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.35rem;
+  }
+
+  .earnings__info {
+    flex: 1;
+  }
+
+  .earnings__role {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .earnings__pct {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--olive);
+  }
+
+  .earnings__info p {
+    font-size: 0.875rem;
+    margin-top: 0.125rem;
+  }
+
+  .earnings__cta {
+    border-top: 1px solid var(--border);
+    padding-top: 2rem;
+  }
+
+  .earnings__cta .text-lg {
+    font-size: 1.0625rem;
+    color: var(--muted);
+  }
+
+  .earnings__cta strong {
+    color: var(--charcoal);
+  }
+</style>
